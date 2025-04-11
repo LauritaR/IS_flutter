@@ -19,30 +19,149 @@ class HomePage extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // _userName(),
+          _user(),
+          SizedBox(height: 15,),
+          _userName(),
           _searchField(),
           SizedBox(height: 40,),
           _categoriesSection()
         ],
       ),
+      bottomNavigationBar:bottomNavigationBar());
+  }
+
+  BottomNavigationBar bottomNavigationBar(){
+    return BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+              icon: Icon(Icons.add),
+              label: 'Calls',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.add),
+            label: 'Calls',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.add),
+            label: 'Calls',
+          ),
+        ] );
+
+  }
+  Card _user(){
+    return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(4),
+      ),
+      clipBehavior: Clip.antiAliasWithSaveLayer,
+      child:
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(padding: const EdgeInsets.all(15),
+            child:Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SvgPicture.asset(
+                 'assets/icons/user.svg',
+                  height: 100,
+                  width: 100,
+                  fit: BoxFit.cover,
+                ),
+
+                Container(width: 20,),
+                Expanded(child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                 Container(height: 5,),
+                    Text('Robotas Robotauskas',
+                      style:TextStyle(
+                          color: Colors.black,
+                          fontSize: 24,
+                          fontWeight: FontWeight.w600
+                      ),
+                    ),
+                    Container(height: 5,),
+                    Text('Informacinių sistemų inžinerija',
+                      style:TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w400
+                      ),
+                    ),
+                    Container(height: 5,),
+                    Text('3 kursas, studentas',
+                      style:TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w400
+                      ),
+                    ),
+                  ],
+                ))
+              ],
+            ))
+          ],
+        )
     );
   }
 
-  // Container _userName(){
-  //   return Container(
-  //     child: Padding(
-  //       padding: const EdgeInsets.only(left: 20, top: 20),
-  //       child: Text('Robotas Robotauskas',
-  //       style: TextStyle(
-  //         color: Colors.black,
-  //         fontSize: 20,
-  //         fontWeight: FontWeight.w600
-  //       ),
-  //       ),
-  //     ),
-  //
-  //   );
-  // }
+  Container _userName(){
+    return Container(
+      margin: EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        color: Color(0x3c490f0f),
+          borderRadius: BorderRadius.circular(20)
+        ),
+      child: Row(
+        children: [
+          Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Padding(padding: const EdgeInsets.only(left: 20, top: 10),
+                  child: Text('Robotas Robotauskas',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 24,
+                    fontWeight: FontWeight.w600
+                  ),)),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Padding(padding: const EdgeInsets.only(left: 20),
+                  child: Text('Informacinių sistemų inžinerija',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 22,
+                    fontWeight: FontWeight.w400
+                  )),),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Padding(padding: const EdgeInsets.only(left:20, bottom: 10),
+                    child:Text('3 kursas, studentas',
+                    style: TextStyle(
+                      color:Colors.black,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w400
+                    )
+                    ),
+                    ),
+                  ],
+              )
+
+            ],
+          ),
+        ],
+      ),
+    );
+  }
 
   Column _categoriesSection() {
     return Column(
@@ -50,7 +169,7 @@ class HomePage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 20),
               child: Text(
-                'Category',
+                'Kategorijos',
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 24,
@@ -94,9 +213,9 @@ class HomePage extends StatelessWidget {
                          Text(
                            categories[index].name,
                            style: TextStyle(
-                             fontWeight: FontWeight.w400,
+                             fontWeight: FontWeight.w600,
                              color: Colors.black,
-                             fontSize: 18
+                             fontSize: 14
                            ),
                          )
                        ],

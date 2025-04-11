@@ -17,27 +17,40 @@ class CategoryModel{
     
     categories.add(
         CategoryModel(
-            name: 'Salad',
-            iconPath: 'assets/icons/filter.svg',
-            boxColor: Color(0xff92A3FD))
+            name: 'Studijos',
+            iconPath: 'assets/icons/studijos.svg',
+            boxColor: Color(0x3c490f0f))
     );
-
     categories.add(
         CategoryModel(
-            name: 'Cake',
-            iconPath: 'assets/icons/filter.svg',
-            boxColor: Color(0xff92fdb7)));
+            name: 'Registracijos',
+            iconPath: 'assets/icons/registracijos.svg',
+            boxColor: Color(0x3c490f0f)));
     categories.add(
         CategoryModel(
-            name: 'Pie',
-            iconPath: 'assets/icons/filter.svg',
-            boxColor: Color(0xffe6fd92)));
+            name: 'Rašto darbai',
+            iconPath: 'assets/icons/rasto.svg',
+            boxColor: Color(0x3c490f0f)));
     categories.add(
         CategoryModel(
-            name: 'Cepelinai',
-            iconPath: 'assets/icons/filter.svg',
-            boxColor: Color(0xfff292fd)));
-
+            name: 'Finansai',
+            iconPath: 'assets/icons/finansai.svg',
+            boxColor: Color(0x3c490f0f)));
+    categories.add(
+        CategoryModel(
+            name: 'ePrašymai',
+            iconPath: 'assets/icons/prasymai.svg',
+            boxColor: Color(0x3c490f0f)));
+    categories.add(
+        CategoryModel(
+            name: 'Apklausos',
+            iconPath: 'assets/icons/apklausos.svg',
+            boxColor: Color(0x3c490f0f)));
+    categories.add(
+        CategoryModel(
+            name: 'Karjera',
+            iconPath: 'assets/icons/karjera.svg',
+            boxColor: Color(0x3c490f0f)));
     return categories;
   }
 }
