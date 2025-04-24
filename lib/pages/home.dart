@@ -3,11 +3,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:vu/models/category_model.dart';
+import 'package:badges/badges.dart' as badges;
+import 'package:vu/pages/messagescreen.dart';
 
-class HomePage extends StatelessWidget {
-  HomePage({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage>{
+  int unreadMessages = 1;
+  bool isBadgeVisible= true;
   List<CategoryModel> categories = [];
+
   void _getCategories(){
     categories =CategoryModel.getCategories();
   }
@@ -32,18 +42,40 @@ class HomePage extends StatelessWidget {
 
   BottomNavigationBar bottomNavigationBar(){
     return BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
+      onTap: (index){
+        if(index == 0){
+          Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const MessageScreen())
+          );
+          setState(() {
+            isBadgeVisible = false;
+          });
+        }
+      },
+        items:  <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-              icon: Icon(Icons.add),
-              label: 'Calls',
+              icon: badges.Badge(
+                position: badges.BadgePosition.topEnd(top:-10, end: -15),
+                  badgeContent: Text(
+                  '$unreadMessages',
+                  style: TextStyle(color:Colors.white, fontSize: 10),
+                  ),
+                  child: Icon(Icons.message_outlined),
+              badgeStyle: badges.BadgeStyle(
+                badgeColor: isBadgeVisible? Colors.red : Colors.white,
+                padding: EdgeInsets.all(5),
+              ),
+              ),
+              label: 'Pranešimai',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.add),
-            label: 'Calls',
+            icon: Icon(Icons.calendar_month_outlined),
+            label: 'Kalendorius',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.add),
-            label: 'Calls',
+            icon: Icon(Icons.settings_outlined),
+            label: 'Nustatymai',
           ),
         ] );
 
@@ -117,35 +149,13 @@ class HomePage extends StatelessWidget {
         children: [
           Column(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Padding(padding: const EdgeInsets.only(left: 20, top: 10),
-                  child: Text('Robotas Robotauskas',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 24,
-                    fontWeight: FontWeight.w600
-                  ),)),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Padding(padding: const EdgeInsets.only(left: 20),
-                  child: Text('Informacinių sistemų inžinerija',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 22,
-                    fontWeight: FontWeight.w400
-                  )),),
-                ],
-              ),
+
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Padding(padding: const EdgeInsets.only(left:20, bottom: 10),
-                    child:Text('3 kursas, studentas',
+                    child:Text('Naujų įvykių nesuplanuota.',
                     style: TextStyle(
                       color:Colors.black,
                       fontSize: 20,
